@@ -11,4 +11,15 @@
             <AppenderRef ref="Console"/>
         </Root>
     </Loggers>
+    <!--
+    <Loggers>
+        <Logger name="Log4j" level="DEBUG" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileAppender"/>
+        </Logger>
+        <Root level="DEBUG">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+    -->
 </Configuration>
