@@ -1,3 +1,21 @@
+package Junit5;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
+import java.util.stream.Stream;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import Model.Person;
+import Model.Staff;
+import Model.Student;
+/*
+ * Test valid input
+ */
 public class ConfigurationDrivenTest {
     
     static class TestConfiguration {
@@ -43,12 +61,12 @@ public class ConfigurationDrivenTest {
         }
     }
     
-    @ParameterizedTest(name = "Testing {0}")
+    @ParameterizedTest(name = "{0}")//calls TestConfigration toString()
     @MethodSource("testConfigurations")
     void testPersonWithConfiguration(TestConfiguration config) {
         Person person = config.getPerson();
         
-        assertAll("Person validation",
+        Assertions.assertAll("Person validation",
             () -> assertEquals(config.getExpectedRole(), person.getRole()),
             () -> {
                 if (config.shouldHaveMajor()) {

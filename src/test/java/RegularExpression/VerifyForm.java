@@ -18,7 +18,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class VerifyForm {
 	private static Logger logger = LogManager.getLogger(VerifyForm.class);
-	public static void main(String[] arg0) {
+	public static void main(String[] arg0) throws InterruptedException {
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize();
@@ -32,8 +32,14 @@ public class VerifyForm {
 		driver.findElement(By.id("userEmail")).sendKeys("email@example.com");
 		driver.findElement(By.xpath("//input[@id='gender-radio-1']/../label")).click();
 		driver.findElement(By.id("userNumber")).sendKeys("1111111111");
-		JavascriptExecutor js = (JavascriptExecutor) driver;
+		
+		  //send value to input field
+        WebElement input = driver.findElement(By.id("currentAddress"));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,500)");
+        js.executeScript("arguments[0].value = arguments[1];", input, "New Value");
+        Thread.sleep(2000);
+  
         logger.info("Submit form.");
 		driver.findElement(By.id("submit")).click();
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("example-modal-sizes-title-lg"))));
@@ -49,8 +55,8 @@ public class VerifyForm {
 	    String emailPattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
 	    Pattern emailRegex = Pattern.compile(emailPattern);
 	    
-	    // Date validation regex for dd MMM yyyy format (e.g., "25 Dec 2023")
-	    String datePattern = "^\\d{2} [A-Za-z]{3},\\d{4}$";
+	    // Date validation regex for dd MMM yyyy format (e.g., "25 Dec,2023")
+	    String datePattern = "^\\d{2} (Jan(uary)?|Feb(ruary)?|Mar(ch)?|Apr(il)?|May|Jun(e)?|Jul(y)?|Aug(ust)?|Sep(tember)?|Oct(ober)?|Nov(ember)?|Dec(ember)?),\\d{4}$";
 	    Pattern dateRegex = Pattern.compile(datePattern);
 	    
 	    // Assertions

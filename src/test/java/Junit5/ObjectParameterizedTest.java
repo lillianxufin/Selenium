@@ -11,7 +11,7 @@ import Model.Staff;
 
 public class ObjectParameterizedTest {
 
-    @ParameterizedTest(name = "Person: {0}, Role: {1}, Major: {2}, ID: {3}")
+    @ParameterizedTest(name = "Name: {0}, Role: {1}, Major: {2}, ID: {3}")
     @CsvSource({
         "John, Student, Math, 123",
         "Lucy, Student, Art, 124", 
@@ -36,7 +36,7 @@ public class ObjectParameterizedTest {
         }
     }
     
-    @ParameterizedTest(name = "Invalid Student: {0}, {1}, {2}, {3}")
+    @ParameterizedTest(name = "Invalid Student: Name: {0}, Role: {1}, Major: {2}, ID: {3}")
     @CsvSource({
         "Tom, Student, CS, -5",
         "Anna, Student, Math, 0",

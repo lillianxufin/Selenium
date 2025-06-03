@@ -16,9 +16,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.events.WebDriverListener;
 
+import utils.ScreenshotUntils;
+
 public class EventHandler implements WebDriverListener {
     private static final Logger logger = LogManager.getLogger(EventHandler.class);
-    
+    private static ScreenshotUntils screenshotUntils = new ScreenshotUntils();
     // Before events
     @Override
     public void beforeFindElement(WebDriver driver, By locator) {
@@ -91,7 +93,7 @@ public class EventHandler implements WebDriverListener {
         
         if (target instanceof WebDriver) {
             WebDriver driver = (WebDriver) target;
-            //takeScreenshot(driver, "error_" + method.getName());
+           screenshotUntils.capturePageScreenshot(driver, "error_" + method.getName());
         }
     }
     
@@ -116,15 +118,5 @@ public class EventHandler implements WebDriverListener {
         
         return description.length() > 0 ? description.toString() : element.toString();
     }
-    
-    private void takeScreenshot(WebDriver driver, String screenshotName) {
-        try {
-            File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            String path = "./screenshots/" + screenshotName + "_" + System.currentTimeMillis() + ".png";
-            org.apache.commons.io.FileUtils.copyFile(screenshot, new File(path));
-            logger.info("Screenshot saved to: " + path);
-        } catch (Exception e) {
-            logger.error("Failed to take screenshot: " + e.getMessage());
-        }
-    }
+
 }

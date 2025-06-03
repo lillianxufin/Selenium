@@ -1,0 +1,17 @@
+{
+	"HOME":"xpath;home",
+	"MENU":{
+		"SubMenu1":[{
+			"Option11":"css;option11",
+			"Option12":"xpath;option12"
+		},
+		{
+			"Option112":"css;option112",
+			"Option122":"xpath;option122"
+		}],
+		"SubMenu2":[{
+			"Option21":"css;option21",
+			"Option22":"xpath;option22"
+		}]
+	}	
+}

@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 
@@ -29,11 +30,12 @@ public class NumberComputingTest {
 	}
 	
 	@Test
-	public void subtract() {
+	public void substract(TestInfo testInfo) {
+		logger.info("Starting test" + testInfo.getDisplayName());
 		int firstNumber = 10;
 		int secondNumber = 5;
 		Assertions.assertEquals(firstNumber-secondNumber, numberComputing.substract(firstNumber, secondNumber));
-		logger.info("Subtract test passed.");
+		logger.info("Substract test passed.");
 	}
 
 }
