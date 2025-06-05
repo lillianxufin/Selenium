@@ -13,9 +13,9 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 import Math.NumberComputing;
 
 @TestInstance(Lifecycle.PER_CLASS)
-public class NumberComputingTest2 {
+public class NumberComputing2Test {
 	private NumberComputing numberComputing;
-	Logger logger = LogManager.getLogger(NumberComputingTest2.class);
+	Logger logger = LogManager.getLogger(NumberComputing2Test.class);
 	@BeforeAll
 	public void setup() {
 		numberComputing = new NumberComputing();

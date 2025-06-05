@@ -1,0 +1,30 @@
+package Junit5;
+
+import static org.junit.jupiter.api.Assertions.assertTimeout;
+
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Timeout;
+@Timeout(value = 10, unit = TimeUnit.SECONDS)
+public class GlobalTimeOutExcepetionsTest {
+	
+	    @Test
+	    void whenTimeout_thenTestPasses() throws InterruptedException {
+	        TimeUnit.SECONDS.sleep(9); // This will cause the test to fail due to timeout
+	    }
+	  
+	     
+	    @Test	    
+	    void longRunningMethodWithTimeout() throws InterruptedException {
+	        TimeUnit.SECONDS.sleep(20); // This will cause timeout
+	    }
+	    
+	    @Test
+	    void testAssertTimeout() {
+	        assertTimeout(Duration.ofSeconds(10), () -> {
+	        	TimeUnit.SECONDS.sleep(9);
+	        });
+	    }
+}

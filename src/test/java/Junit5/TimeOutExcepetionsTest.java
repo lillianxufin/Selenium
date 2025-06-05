@@ -1,5 +1,8 @@
 package Junit5;
 
+import static org.junit.jupiter.api.Assertions.assertTimeout;
+
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.jupiter.api.Test;
@@ -18,5 +21,12 @@ public class TimeOutExcepetionsTest {
 	    @Timeout(value = 10, unit = TimeUnit.SECONDS)
 	    void longRunningMethodWithTimeout() throws InterruptedException {
 	        TimeUnit.SECONDS.sleep(20); // This will cause timeout
+	    }
+	    
+	    @Test
+	    void testAssertTimeout() {
+	        assertTimeout(Duration.ofSeconds(10), () -> {
+	        	TimeUnit.SECONDS.sleep(10);
+	        });
 	    }
 }

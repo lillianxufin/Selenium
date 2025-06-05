@@ -6,7 +6,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import Reader.ConfigReader;
 
 
-public class headlessChromeDemo {
+public class headlessChromeDemoTest {
 	private static ConfigReader configReader = new ConfigReader();
 
     public static void main(String[] args) {

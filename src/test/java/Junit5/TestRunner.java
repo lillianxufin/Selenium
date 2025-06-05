@@ -8,7 +8,7 @@ import org.junit.platform.launcher.core.LauncherFactory;
 import org.junit.platform.launcher.listeners.SummaryGeneratingListener;
 
 import UnitTest.NumberComputingTest;
-import UnitTest.NumberComputingTest2;
+import UnitTest.NumberComputing2Test;
 
 public class TestRunner {
     public static void main(String[] args) {
@@ -24,7 +24,7 @@ public class TestRunner {
         LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder.request()
             .selectors(
                 DiscoverySelectors.selectClass(NumberComputingTest.class),
-                DiscoverySelectors.selectClass(NumberComputingTest2.class)
+                DiscoverySelectors.selectClass(NumberComputing2Test.class)
             )
             .build();
         

@@ -16,13 +16,13 @@ import Service.MyService;
 @ExtendWith(MockitoExtension.class)
 public class MyServiceTest {
     @Mock
-    private MyRepository myRepository;  // MyRepository is mocked, no need to import it
+    private MyRepository myRepository;  // MyRepository is mocked, no need to initiate it
     @InjectMocks
     private MyService myService;  // MyService gets dependencies injected
     @Test
     void testGetData() {
         // Arrange
-        when(myRepository.getData()).thenReturn("Mocked Data");
+       when(myRepository.getData()).thenReturn("Mocked Data");
         // Act
         String result = myService.getData();
         // Assert

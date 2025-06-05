@@ -6,7 +6,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
-import Reader.ConfigReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class SSL {
